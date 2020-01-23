@@ -21,10 +21,10 @@ import java.awt.image.BufferedImage;
 public class VentanaPaint extends javax.swing.JFrame {
 
     //Este buffer acelera la memoria para que podamos dibujar
-    BufferedImage buffer = null;
+    BufferedImage buffer, buffer2 = null;
 
     //Permite dibujar, una para el buufer y otra para el panel
-    Graphics2D bufferGraphics, jPanelGraphics = null;
+    Graphics2D bufferGraphics, bufferGraphics2, jPanelGraphics = null;
 
     Circulo miCirculo = null;
     Forma miForma = null;
@@ -42,15 +42,23 @@ public class VentanaPaint extends javax.swing.JFrame {
     private void inicializaBuffers() {
         //Creo una imagen del mismo ancho y alto que el Jpanel       
         buffer = (BufferedImage) jPanel1.createImage(jPanel1.getWidth(), jPanel1.getHeight());
+        buffer2 = (BufferedImage) jPanel1.createImage(jPanel1.getWidth(), jPanel1.getHeight());
         //Creo una imagn moficable
         bufferGraphics = buffer.createGraphics();
+        bufferGraphics2 = buffer2.createGraphics();
         //Inicializo el buffer para que se pinte de blanco entero, sirve para borrar todo
         bufferGraphics.setColor(Color.white);
         bufferGraphics.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
+        
+        bufferGraphics2.setColor(Color.white);
+        bufferGraphics2.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
 
         //Enlazamos el jPanel1 con el jPanelGraphics
         jPanelGraphics = (Graphics2D) jPanel1.getGraphics();
+        
     }
+    
+    
 
     @Override
     public void paint(Graphics g) {
@@ -85,6 +93,9 @@ public class VentanaPaint extends javax.swing.JFrame {
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPanel1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel1MouseReleased(evt);
             }
         });
 
@@ -145,6 +156,9 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     //Este metodo pinta lineas pero si lo haces rápido son discontinuas
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        
+        bufferGraphics.drawImage(buffer2, 0, 0, null);
+        
         switch (ventanaHerramientas1.formaElegida) {
 
             case 0:
@@ -180,16 +194,20 @@ public class VentanaPaint extends javax.swing.JFrame {
                 miCirculo.dibujate(bufferGraphics, evt.getX());
                 break;
             case 5:
-                miForma = new Pentagono(evt.getX(), evt.getY(),5, panelColores.colorSeleccionado, false);
+                miForma = new Pentagono(evt.getX(), evt.getY(),5, panelColores.colorSeleccionado, true);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
                 
             case 256:
-                miForma = new Estrella(evt.getX(), evt.getY(), panelColores.colorSeleccionado, false);
+                miForma = new Estrella(evt.getX(), evt.getY(), panelColores.colorSeleccionado, true);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
         }
     }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+        miForma.dibujate(bufferGraphics2, evt.getX(), evt.getY());
+    }//GEN-LAST:event_jPanel1MouseReleased
 
     /**
      * @param args the command line arguments
