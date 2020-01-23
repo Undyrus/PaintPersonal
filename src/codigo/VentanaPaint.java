@@ -6,6 +6,9 @@
 package codigo;
 
 import codigo.formas.Circulo;
+import codigo.formas.Estrella;
+import codigo.formas.Forma;
+import codigo.formas.Pentagono;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -24,6 +27,7 @@ public class VentanaPaint extends javax.swing.JFrame {
     Graphics2D bufferGraphics, jPanelGraphics = null;
 
     Circulo miCirculo = null;
+    Forma miForma = null;
 
     /**
      * Creates new form VentanaPaint
@@ -152,6 +156,14 @@ public class VentanaPaint extends javax.swing.JFrame {
             case 1:
                 miCirculo.dibujate(bufferGraphics, evt.getX());
                 break;
+                
+            case 5:
+                miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+                break;
+                
+            case 256:
+                miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+                break;
 
         }
         repaint(0, 0, 1, 1);
@@ -160,13 +172,22 @@ public class VentanaPaint extends javax.swing.JFrame {
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         switch (ventanaHerramientas1.formaElegida) {
 
-            case 0: break;
+            case 0:
+                break;
 
-            case 1: 
+            case 1:
                 miCirculo = new Circulo(evt.getX(), evt.getY(), 1, panelColores.colorSeleccionado, false);
                 miCirculo.dibujate(bufferGraphics, evt.getX());
                 break;
-
+            case 5:
+                miForma = new Pentagono(evt.getX(), evt.getY(),5, panelColores.colorSeleccionado, false);
+                miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+                break;
+                
+            case 256:
+                miForma = new Estrella(evt.getX(), evt.getY(), panelColores.colorSeleccionado, false);
+                miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+                break;
         }
     }//GEN-LAST:event_jPanel1MousePressed
 

@@ -9,12 +9,12 @@ import java.awt.Color;
 
 /**
  *
- * @author Javier
+ * @author Javier de la Llave
  */
-public class Cuadrado extends Forma{
+public class Pentagono extends Forma{
     
-    public Cuadrado(int _posX, int _posY, Color _color, boolean _relleno) {
-        super(_posX, _posY, 4, _color, _relleno);
+    public Pentagono(int _posX, int _posY, int _lados, Color _color, boolean _relleno) {
+        super(_posX, _posY, 5, _color, _relleno);
     }
     
 }

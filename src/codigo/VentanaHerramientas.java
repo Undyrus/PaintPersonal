@@ -31,6 +31,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         botonCirculo = new javax.swing.JButton();
         botonCuadrado = new javax.swing.JButton();
         botonPentagono = new javax.swing.JButton();
+        botonEstrella = new javax.swing.JButton();
 
         botonCirculo.setText("círculo");
         botonCirculo.addActionListener(new java.awt.event.ActionListener() {
@@ -53,6 +54,13 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
+        botonEstrella.setText("Estrella");
+        botonEstrella.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEstrellaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,7 +73,8 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(botonCuadrado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(botonCirculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(botonEstrella, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -77,7 +86,9 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                 .addComponent(botonCuadrado)
                 .addGap(18, 18, 18)
                 .addComponent(botonPentagono)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(botonEstrella)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -93,10 +104,15 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         formaElegida = 5;
     }//GEN-LAST:event_botonPentagonoActionPerformed
 
+    private void botonEstrellaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstrellaActionPerformed
+        formaElegida = 256;
+    }//GEN-LAST:event_botonEstrellaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCirculo;
     private javax.swing.JButton botonCuadrado;
+    private javax.swing.JButton botonEstrella;
     private javax.swing.JButton botonPentagono;
     // End of variables declaration//GEN-END:variables
 }

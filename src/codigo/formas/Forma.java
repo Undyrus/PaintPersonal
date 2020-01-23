@@ -44,9 +44,9 @@ public class Forma extends Polygon{
     
     //Este método calcula la posición de los vértices en un polígono regular
     public void calculaVertices(int _radio, double _giro){
-        for(int i=0; i<npoints; i++){
-            xpoints[i]=(int)(x+_radio*Math.cos((2+Math.PI*i+_giro/40)/npoints));
-            ypoints[i]=(int)(y+_radio*Math.sin((2+Math.PI*i+_giro/40)/npoints));
+        for (int i=0; i< npoints; i++){
+            xpoints[i] = (int) (x + _radio*Math.cos((2*Math.PI * i + _giro/40)/npoints));
+            ypoints[i] = (int) (y + _radio*Math.sin((2*Math.PI * i + _giro/40)/npoints));
         }
     }
 }
