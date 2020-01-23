@@ -30,6 +30,7 @@ public class Circulo extends Ellipse2D.Double{
     }
     
     public void dibujate(Graphics2D g2, int _posX){
+        
         int diametro = Math.abs((int)x-_posX);
         width=diametro;
         height=diametro;

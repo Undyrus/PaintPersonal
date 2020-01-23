@@ -11,6 +11,7 @@ package codigo;
  */
 public class VentanaHerramientas extends javax.swing.JPanel {
 
+    public int formaElegida;
     /**
      * Creates new form VentanaHerramientas
      */
@@ -28,8 +29,29 @@ public class VentanaHerramientas extends javax.swing.JPanel {
     private void initComponents() {
 
         botonCirculo = new javax.swing.JButton();
+        botonCuadrado = new javax.swing.JButton();
+        botonPentagono = new javax.swing.JButton();
 
         botonCirculo.setText("círculo");
+        botonCirculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCirculoActionPerformed(evt);
+            }
+        });
+
+        botonCuadrado.setText("Cuadrado");
+        botonCuadrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCuadradoActionPerformed(evt);
+            }
+        });
+
+        botonPentagono.setText("Pentágono");
+        botonPentagono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPentagonoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -37,20 +59,44 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(botonCirculo)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonPentagono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonCuadrado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonCirculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(botonCirculo)
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(botonCuadrado)
+                .addGap(18, 18, 18)
+                .addComponent(botonPentagono)
+                .addContainerGap(139, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCirculoActionPerformed
+        formaElegida = 1;
+    }//GEN-LAST:event_botonCirculoActionPerformed
+
+    private void botonCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCuadradoActionPerformed
+        formaElegida = 4;
+    }//GEN-LAST:event_botonCuadradoActionPerformed
+
+    private void botonPentagonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPentagonoActionPerformed
+        formaElegida = 5;
+    }//GEN-LAST:event_botonPentagonoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCirculo;
+    private javax.swing.JButton botonCuadrado;
+    private javax.swing.JButton botonPentagono;
     // End of variables declaration//GEN-END:variables
 }

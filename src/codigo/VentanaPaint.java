@@ -23,8 +23,6 @@ public class VentanaPaint extends javax.swing.JFrame {
     //Permite dibujar, una para el buufer y otra para el panel
     Graphics2D bufferGraphics, jPanelGraphics = null;
 
-    int herramientaSeleccionada = 0;
-
     Circulo miCirculo = null;
 
     /**
@@ -99,12 +97,6 @@ public class VentanaPaint extends javax.swing.JFrame {
 
         labelCoordenadas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
-        ventanaHerramientas1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                ventanaHerramientas1MousePressed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,8 +124,7 @@ public class VentanaPaint extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addComponent(ventanaHerramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(ventanaHerramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
@@ -150,7 +141,7 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     //Este metodo pinta lineas pero si lo haces rápido son discontinuas
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
-        switch (herramientaSeleccionada) {
+        switch (ventanaHerramientas1.formaElegida) {
 
             case 0:
                 bufferGraphics.setColor(panelColores.colorSeleccionado);
@@ -166,12 +157,8 @@ public class VentanaPaint extends javax.swing.JFrame {
         repaint(0, 0, 1, 1);
     }//GEN-LAST:event_jPanel1MouseDragged
 
-    private void ventanaHerramientas1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventanaHerramientas1MousePressed
-        herramientaSeleccionada = 1; //Cambio a pintar círculos
-    }//GEN-LAST:event_ventanaHerramientas1MousePressed
-
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
-        switch (herramientaSeleccionada) {
+        switch (ventanaHerramientas1.formaElegida) {
 
             case 0: break;
 
