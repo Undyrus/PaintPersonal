@@ -5,6 +5,9 @@
  */
 package codigo;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Javier
@@ -17,7 +20,25 @@ public class VentanaHerramientas extends javax.swing.JPanel {
      * Creates new form VentanaHerramientas
      */
     public VentanaHerramientas() {
+        
         initComponents();
+        
+         ImageIcon miLapiz1 =
+                new ImageIcon(
+                        new ImageIcon(getClass().getResource("/img/lapiz.PNG"))
+                        .getImage()
+                        .getScaledInstance(38,38, Image.SCALE_DEFAULT)
+                
+        );
+        
+        botonLapiz.setIcon(miLapiz1);
+        
+        botonLapiz.setOpaque(false);
+        botonLapiz.setContentAreaFilled(false);
+        botonLapiz.setBorderPainted(true);
+        
+        
+        
     }
 
     /**
@@ -79,7 +100,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
-        botonLapiz.setText("Lapiz");
+        botonLapiz.setPreferredSize(new java.awt.Dimension(34, 34));
         botonLapiz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonLapizActionPerformed(evt);
@@ -100,9 +121,9 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkRelleno)
-                            .addComponent(botonCuadrado))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(botonLapiz, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(botonCuadrado)
+                            .addComponent(botonLapiz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -121,8 +142,8 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonTriangulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonLapiz)
-                .addGap(89, 89, 89))
+                .addComponent(botonLapiz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -152,6 +173,15 @@ public class VentanaHerramientas extends javax.swing.JPanel {
 
     private void botonLapizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLapizActionPerformed
         formaElegida = 0;
+        ImageIcon miLapiz2 =
+                new ImageIcon(
+                        new ImageIcon(getClass().getResource("/img/lapiz2.PNG"))
+                        .getImage()
+                        .getScaledInstance(38,38, Image.SCALE_DEFAULT)
+                
+        );
+        
+        botonLapiz.setIcon(miLapiz2);
     }//GEN-LAST:event_botonLapizActionPerformed
 
 
