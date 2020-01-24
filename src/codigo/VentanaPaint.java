@@ -6,9 +6,12 @@
 package codigo;
 
 import codigo.formas.Circulo;
+import codigo.formas.Circulo2;
+import codigo.formas.Cuadrado;
 import codigo.formas.Estrella;
 import codigo.formas.Forma;
 import codigo.formas.Pentagono;
+import codigo.formas.Triangulo;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -49,16 +52,14 @@ public class VentanaPaint extends javax.swing.JFrame {
         //Inicializo el buffer para que se pinte de blanco entero, sirve para borrar todo
         bufferGraphics.setColor(Color.white);
         bufferGraphics.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
-        
+
         bufferGraphics2.setColor(Color.white);
         bufferGraphics2.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
 
         //Enlazamos el jPanel1 con el jPanelGraphics
         jPanelGraphics = (Graphics2D) jPanel1.getGraphics();
-        
+
     }
-    
-    
 
     @Override
     public void paint(Graphics g) {
@@ -154,32 +155,43 @@ public class VentanaPaint extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //Este metodo pinta lineas pero si lo haces rápido son discontinuas
+    //Este metodo actua cuando arrastras el raton habiendo pulsado y hasta que sueltas
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
-        
+
         bufferGraphics.drawImage(buffer2, 0, 0, null);
-        
+
         switch (ventanaHerramientas1.formaElegida) {
 
             case 0:
                 bufferGraphics.setColor(panelColores.colorSeleccionado);
                 bufferGraphics.fillOval(evt.getX(), evt.getY(), 10, 10);
-                //Refresca la pantalla y pone lo pintado
                 break;
 
             case 1:
                 miCirculo.dibujate(bufferGraphics, evt.getX());
                 break;
-                
+
+            case 3:
+                miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+                break;
+
+            case 4:
+                miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+                break;
+
             case 5:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                
+            case 100:
+                miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+                break;
+
             case 256:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
 
         }
+        //Refresca la pantalla y pone lo pintado
         repaint(0, 0, 1, 1);
     }//GEN-LAST:event_jPanel1MouseDragged
 
@@ -190,16 +202,32 @@ public class VentanaPaint extends javax.swing.JFrame {
                 break;
 
             case 1:
-                miCirculo = new Circulo(evt.getX(), evt.getY(), 1, panelColores.colorSeleccionado, false);
+                miCirculo = new Circulo(evt.getX(), evt.getY(), 1, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miCirculo.dibujate(bufferGraphics, evt.getX());
                 break;
-            case 5:
-                miForma = new Pentagono(evt.getX(), evt.getY(),5, panelColores.colorSeleccionado, true);
+
+            case 3:
+                miForma = new Triangulo(evt.getX(), evt.getY(), 4, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                
+
+            case 4:
+                miForma = new Cuadrado(evt.getX(), evt.getY(), 4, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
+                miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+                break;
+
+            case 5:
+                miForma = new Pentagono(evt.getX(), evt.getY(), 5, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
+                miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+                break;
+
+            case 100:
+                miForma = new Circulo2(evt.getX(), evt.getY(), 100, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
+                miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+                break;
+
             case 256:
-                miForma = new Estrella(evt.getX(), evt.getY(), panelColores.colorSeleccionado, true);
+                miForma = new Estrella(evt.getX(), evt.getY(), panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
         }

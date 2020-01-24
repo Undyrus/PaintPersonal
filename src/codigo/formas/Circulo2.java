@@ -11,10 +11,10 @@ import java.awt.Color;
  *
  * @author Javier
  */
-public class Cuadrado extends Forma{
+public class Circulo2 extends Forma{
     
-    public Cuadrado(int _posX, int _posY, int _lados, Color _color, boolean _relleno) {
-        super(_posX, _posY, 4, _color, _relleno);
+    public Circulo2(int _posX, int _posY, int _lados, Color _color, boolean _relleno) {
+        super(_posX, _posY, 100, _color, _relleno);
     }
     
 }
