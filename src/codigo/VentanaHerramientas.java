@@ -11,8 +11,8 @@ package codigo;
  */
 public class VentanaHerramientas extends javax.swing.JPanel {
 
-    boolean relleno = false;
-    public int formaElegida;
+    boolean relleno = false;//Indica si la forma está rellena o no
+    public int formaElegida;//indica la herramienta que usaremos
     /**
      * Creates new form VentanaHerramientas
      */
@@ -29,20 +29,13 @@ public class VentanaHerramientas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        botonCirculo = new javax.swing.JButton();
         botonCuadrado = new javax.swing.JButton();
         botonPentagono = new javax.swing.JButton();
         botonEstrella = new javax.swing.JButton();
         botonCirculo2 = new javax.swing.JButton();
         botonTriangulo = new javax.swing.JButton();
         checkRelleno = new javax.swing.JCheckBox();
-
-        botonCirculo.setText("círculo");
-        botonCirculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCirculoActionPerformed(evt);
-            }
-        });
+        botonLapiz = new javax.swing.JButton();
 
         botonCuadrado.setText("Cuadrado");
         botonCuadrado.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +58,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
-        botonCirculo2.setText("círculo2");
+        botonCirculo2.setText("Círculo");
         botonCirculo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCirculo2ActionPerformed(evt);
@@ -86,6 +79,13 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
+        botonLapiz.setText("Lapiz");
+        botonLapiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLapizActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,35 +100,31 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkRelleno)
-                            .addComponent(botonCirculo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonCuadrado))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(botonLapiz, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(checkRelleno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonCirculo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonCuadrado)
-                .addGap(18, 18, 18)
-                .addComponent(botonPentagono)
-                .addGap(18, 18, 18)
-                .addComponent(botonEstrella)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonCirculo2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonCuadrado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonPentagono)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonEstrella)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonTriangulo)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonLapiz)
+                .addGap(89, 89, 89))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void botonCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCirculoActionPerformed
-        formaElegida = 1;
-    }//GEN-LAST:event_botonCirculoActionPerformed
 
     private void botonCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCuadradoActionPerformed
         formaElegida = 4;
@@ -143,7 +139,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
     }//GEN-LAST:event_botonEstrellaActionPerformed
 
     private void botonCirculo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCirculo2ActionPerformed
-        formaElegida = 100;
+        formaElegida = 1;
     }//GEN-LAST:event_botonCirculo2ActionPerformed
 
     private void botonTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrianguloActionPerformed
@@ -154,12 +150,16 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         relleno = checkRelleno.isSelected();
     }//GEN-LAST:event_checkRellenoActionPerformed
 
+    private void botonLapizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLapizActionPerformed
+        formaElegida = 0;
+    }//GEN-LAST:event_botonLapizActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonCirculo;
     private javax.swing.JButton botonCirculo2;
     private javax.swing.JButton botonCuadrado;
     private javax.swing.JButton botonEstrella;
+    private javax.swing.JButton botonLapiz;
     private javax.swing.JButton botonPentagono;
     private javax.swing.JButton botonTriangulo;
     private javax.swing.JCheckBox checkRelleno;

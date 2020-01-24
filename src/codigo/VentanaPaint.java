@@ -5,7 +5,6 @@
  */
 package codigo;
 
-import codigo.formas.Circulo;
 import codigo.formas.Circulo2;
 import codigo.formas.Cuadrado;
 import codigo.formas.Estrella;
@@ -29,7 +28,6 @@ public class VentanaPaint extends javax.swing.JFrame {
     //Permite dibujar, una para el buufer y otra para el panel
     Graphics2D bufferGraphics, bufferGraphics2, jPanelGraphics = null;
 
-    Circulo miCirculo = null;
     Forma miForma = null;
 
     /**
@@ -158,17 +156,14 @@ public class VentanaPaint extends javax.swing.JFrame {
     //Este metodo actua cuando arrastras el raton habiendo pulsado y hasta que sueltas
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
 
+        //Esto es lo que se dibuja sobre la pantalla
         bufferGraphics.drawImage(buffer2, 0, 0, null);
 
         switch (ventanaHerramientas1.formaElegida) {
 
             case 0:
-                bufferGraphics.setColor(panelColores.colorSeleccionado);
-                bufferGraphics.fillOval(evt.getX(), evt.getY(), 10, 10);
-                break;
-
-            case 1:
-                miCirculo.dibujate(bufferGraphics, evt.getX());
+                bufferGraphics2.setColor(panelColores.colorSeleccionado);
+                bufferGraphics2.fillOval(evt.getX(), evt.getY(), 10, 10);
                 break;
 
             case 3:
@@ -182,7 +177,7 @@ public class VentanaPaint extends javax.swing.JFrame {
             case 5:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-            case 100:
+            case 1:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
 
@@ -201,11 +196,6 @@ public class VentanaPaint extends javax.swing.JFrame {
             case 0:
                 break;
 
-            case 1:
-                miCirculo = new Circulo(evt.getX(), evt.getY(), 1, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
-                miCirculo.dibujate(bufferGraphics, evt.getX());
-                break;
-
             case 3:
                 miForma = new Triangulo(evt.getX(), evt.getY(), 4, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
@@ -221,7 +211,7 @@ public class VentanaPaint extends javax.swing.JFrame {
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
 
-            case 100:
+            case 1:
                 miForma = new Circulo2(evt.getX(), evt.getY(), 100, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
@@ -234,7 +224,10 @@ public class VentanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
-        miForma.dibujate(bufferGraphics2, evt.getX(), evt.getY());
+        
+        if (ventanaHerramientas1.formaElegida != 0 ){//Para que no dé error cuando no pintemos formas
+            miForma.dibujate(bufferGraphics2, evt.getX(), evt.getY());
+        }
     }//GEN-LAST:event_jPanel1MouseReleased
 
     /**
